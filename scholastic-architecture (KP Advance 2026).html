@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholastic Excellence Strategy Map</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        
+        .diagram-wrapper {
+            position: relative;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .diagram-wrapper:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .expand-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #f1f5f9;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .expand-btn:hover {
+            background: #e2e8f0;
+            color: #1e293b;
+        }
+
+        /* Modal for fullscreen */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 50;
+            padding: 2rem;
+            overflow: auto;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #475569;
+            background: #f1f5f9;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 max-w-6xl mx-auto">
+
+    <!-- Header -->
+    <header class="mb-10 text-center">
+        <h1 class="text-3xl font-bold text-slate-800 mb-2">Scholastic Excellence Architecture</h1>
+        <p class="text-slate-600 max-w-3xl mx-auto">
+            Visualizing the integration of Singapore Teaching Practice (STP), Assessment, Pedagogy, and Enrichment to achieve deep cognitive goals.
+        </p>
+    </header>
+
+    <!-- Diagram 1 -->
+    <section>
+        <div class="flex justify-between items-center mb-4">
+            <div>
+                <h2 class="text-xl font-semibold text-slate-700">View 1: The Total Ecosystem</h2>
+                <p class="text-sm text-slate-500">How pedagogy, assessment, and enrichment converge.</p>
+            </div>
+            <span class="text-sm bg-blue-100 text-blue-800 py-1 px-3 rounded-full">Structural Flow</span>
+        </div>
+        
+        <div class="diagram-wrapper" id="wrapper-1">
+            <button class="expand-btn" onclick="openModal('mermaid-1')">
+                <i class="fa-solid fa-expand"></i> Full Screen
+            </button>
+            <div class="mermaid" id="mermaid-1">
+                %%{init: {'theme': 'base', 'themeVariables': { 'fontFamily': 'Inter', 'primaryColor': '#e0e7ff', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#f1f5f9'}}}%%
+                graph TD
+                    %% Definitions
+                    classDef foundation fill:#f1f5f9,stroke:#94a3b8,stroke-width:2px,stroke-dasharray: 5 5,color:#334155
+                    classDef pedagogy fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#064e3b
+                    classDef process fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+                    classDef enrichment fill:#fce7f3,stroke:#db2777,stroke-width:2px,color:#831843
+                    classDef outcome fill:#dbeafe,stroke:#2563eb,stroke-width:3px,color:#1e40af,font-weight:bold
+                    classDef focus fill:#1e293b,stroke:#0f172a,stroke-width:4px,color:#fff
+                    classDef ai fill:#f3e8ff,stroke:#9333ea,stroke-width:2px,stroke-dasharray: 3 3
+
+                    subgraph Ecosystem [THE SCHOOL ECOSYSTEM]
+                        direction TB
+
+                        %% Foundation
+                        subgraph STP [Foundation: Singapore Teaching Practice]
+                            style STP fill:#f8fafc,stroke:#cbd5e1,color:#475569
+                            Assess["<b>Assessment & Feedback</b><br/>Assessment for Learning"]:::foundation
+                            Culture["<b>Positive Culture</b><br/>Trust & Rapport"]:::foundation
+                        end
+
+                        %% Core Engines
+                        subgraph ClassPed [Classroom Pedagogy]
+                            style ClassPed fill:#ffffff,stroke:#e2e8f0,color:#333
+                            CBCI["<b>CBCI</b><br/>Structuring Content<br/>(Macro-Concepts)"]:::pedagogy
+                            CoT["<b>Cultures of Thinking</b><br/>Structuring Process<br/>(Thinking Routines)"]:::process
+                        end
+
+                        Enrich["<b>Enrichment Programmes</b><br/>Real-World Application<br/>Authentic Contexts"]:::enrichment
+                        
+                        %% AI Enabler
+                        AI["<b>AI & Ed-Tech</b><br/>Differentiation &<br/>Visualization"]:::ai
+
+                        %% Convergence
+                        Experience(("<b>THE LEARNING<br/>EXPERIENCE</b>")):::focus
+
+                        %% Goals
+                        subgraph Goals [Outcomes: Scholastic Excellence]
+                            style Goals fill:#eff6ff,stroke:#bfdbfe
+                            CU("Conceptual<br/>Understanding"):::outcome
+                            Meta("Metacognition"):::outcome
+                            Syn("Synoptic<br/>Thinking"):::outcome
+                        end
+
+                        %% Connections - Flow
+                        Culture --> ClassPed
+                        Assess -.->|Informs| ClassPed
+                        
+                        CBCI --> Experience
+                        CoT --> Experience
+                        Enrich -->|Expands| Experience
+                        AI -.->|Accelerates| Experience
+
+                        Experience ==> CU
+                        Experience ==> Meta
+                        Experience ==> Syn
+
+                        %% Feedback Loops
+                        Assess -.->|Self-Assessment| Meta
+                        Enrich -.->|Cross-Domain Context| Syn
+                        CU -.->|Transfer| Enrich
+                    end
+            </div>
+        </div>
+    </section>
+
+    <!-- Diagram 2 -->
+    <section class="mt-8">
+        <div class="flex justify-between items-center mb-4">
+            <div>
+                <h2 class="text-xl font-semibold text-slate-700">View 2: The Network of Reinforcement</h2>
+                <p class="text-sm text-slate-500">Connecting specific interventions to specific goals.</p>
+            </div>
+            <span class="text-sm bg-purple-100 text-purple-800 py-1 px-3 rounded-full">Synergy Map</span>
+        </div>
+
+        <div class="diagram-wrapper" id="wrapper-2">
+            <button class="expand-btn" onclick="openModal('mermaid-2')">
+                <i class="fa-solid fa-expand"></i> Full Screen
+            </button>
+            <div class="mermaid" id="mermaid-2">
+                mindmap
+                  root((SCHOLASTIC<br/>EXCELLENCE))
+                    (Conceptual Understanding)
+                      ::icon(fa fa-lightbulb)
+                      [Driven by: CBCI]
+                        (Moving 2D Facts -> 3D Concepts)
+                      [Reinforced by: Assessment]
+                        (Checking for Transfer, not just Recall)
+                    (Synoptic Thinking)
+                      ::icon(fa fa-project-diagram)
+                      [The Convergence Point]
+                      [Driven by: Enrichment]
+                        (Real-world complex problems)
+                      [Driven by: Pedagogy]
+                        (Connecting Macro-Concepts across subjects)
+                    (Metacognition)
+                      ::icon(fa fa-brain)
+                      [Driven by: CoT]
+                        (Making Thinking Visible)
+                      [Reinforced by: Assessment]
+                        (Assessment AS Learning / Reflection)
+                      [Enabled by: AI]
+                        (AI as critique partner)
+                    (Foundation: STP)
+                      ::icon(fa fa-building)
+                      [Assessment for Learning]
+                      [Differentiated Instruction]
+            </div>
+        </div>
+    </section>
+
+    <!-- Legend/Explanation -->
+    <section class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-xl border border-slate-200">
+            <h3 class="font-bold text-lg mb-4 text-slate-800">New Additions Explained</h3>
+            <ul class="space-y-3">
+                <li class="flex items-start">
+                    <span class="inline-block w-3 h-3 rounded-full bg-slate-400 mt-1.5 mr-3"></span>
+                    <div>
+                        <strong class="text-slate-700">Assessment (STP):</strong> 
+                        This is the compass. It ensures that while we teach Concepts (CBCI), we are actually measuring understanding, not just memory. It feeds directly into <em>Metacognition</em> via self-assessment.
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="inline-block w-3 h-3 rounded-full bg-pink-600 mt-1.5 mr-3"></span>
+                    <div>
+                        <strong class="text-slate-700">Enrichment Programmes:</strong> 
+                        This acts as the "Application Layer." While the classroom builds the concepts, enrichment (e.g., CCAs, trips, projects) provides the messy, real-world context needed for true <em>Synoptic Thinking</em>.
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="bg-white p-6 rounded-xl border border-slate-200">
+            <h3 class="font-bold text-lg mb-4 text-slate-800">The "Core" Engine</h3>
+            <p class="text-slate-600 mb-4">
+                The "Classroom Pedagogy" box is where your teachers live daily. It combines the <strong>What</strong> (CBCI) and the <strong>How</strong> (CoT).
+            </p>
+            <div class="bg-green-50 border-l-4 border-green-500 p-3 text-sm text-green-800">
+                <strong>Key Synergy:</strong> Use AI to bridge Pedagogy and Assessment. E.g., "Use AI to generate a rubric that assesses the <em>thinking process</em> (CoT) not just the final output."
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Container -->
+    <div id="modal" class="modal">
+        <div class="close-btn" onclick="closeModal()">
+            <i class="fa-solid fa-times"></i>
+        </div>
+        <div class="modal-content" id="modal-content">
+            <!-- Content injected via JS -->
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({ 
+            startOnLoad: true,
+            securityLevel: 'loose',
+            theme: 'base',
+            flowchart: { useMaxWidth: false, htmlLabels: true }
+        });
+
+        function openModal(id) {
+            const modal = document.getElementById('modal');
+            const content = document.getElementById('modal-content');
+            const source = document.getElementById(id);
+            
+            // Clone the diagram
+            content.innerHTML = '';
+            const clone = source.cloneNode(true);
+            clone.removeAttribute('id');
+            // Remove max-width constraints for full view
+            clone.style.maxWidth = 'none';
+            clone.style.width = '100%';
+            
+            content.appendChild(clone);
+            modal.classList.add('active');
+            
+            // Re-render mermaid if needed (though cloning SVG usually works)
+            // or we rely on SVG scaling.
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        // Close on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
